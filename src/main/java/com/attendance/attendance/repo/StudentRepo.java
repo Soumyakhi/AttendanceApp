@@ -8,4 +8,5 @@ import org.springframework.stereotype.Repository;
 public interface StudentRepo extends MongoRepository<Student, Integer> {
     Student findByUserName(String username);
     Student findByUserNameAndPassword(String username, String password);
+    Student findByUserNameAndCourse_SubjectList_SubjectId(String userName, String subjectId);
 }

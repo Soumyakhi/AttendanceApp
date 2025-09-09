@@ -52,7 +52,7 @@ public class AdminController {
     }
     @PostMapping("/loginteacher")
     public ResponseEntity<Object> loginteacher(@RequestBody LoginDTO loginDTO) {
-        LoginResDTO loginInfoDTO = authService.doAuthenticateTeacher(loginDTO);;
+        LoginResDTO loginInfoDTO = authService.doAuthenticateTeacher(loginDTO);
         return new ResponseEntity<>(loginInfoDTO, HttpStatus.OK);
     }
     @Autowired
@@ -64,5 +64,13 @@ public class AdminController {
     @PutMapping("/closeClass/{classId}")
     public ResponseEntity<Object> closeClass(HttpServletRequest request, @PathVariable String classId) {
         return new ResponseEntity<>(classService.closeClass(request,classId), HttpStatus.OK);
+    }
+    @PutMapping("/postAttendance/{classId}")
+    public ResponseEntity<Object> postAttendance(HttpServletRequest request, @PathVariable String classId) {
+        return new ResponseEntity<>(classService.postAttendance(request,classId), HttpStatus.OK);
+    }
+    @GetMapping("/viewAttendance/{classId}")
+    public ResponseEntity<Object> postAttendance(@PathVariable String classId) {
+        return new ResponseEntity<>(classService.viewAttendance(classId), HttpStatus.OK);
     }
 }

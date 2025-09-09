@@ -4,6 +4,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
+import java.util.Set;
 
 @Document
 public class ClassEntity {
@@ -11,9 +12,9 @@ public class ClassEntity {
     private String id;
     private String classId;
     private Teacher teacher;
-    private List<String> attendedStudents;
+    private Set<String> attendedStudents;
     private boolean isOpen;
-    public ClassEntity( String classId, Teacher teacher, List<String> attendedStudents, boolean isOpen) {
+    public ClassEntity( String classId, Teacher teacher, Set<String> attendedStudents, boolean isOpen) {
         this.classId = classId;
         this.teacher = teacher;
         this.attendedStudents = attendedStudents;
@@ -43,11 +44,11 @@ public class ClassEntity {
         this.teacher = teacher;
     }
 
-    public List<String> getAttendedStudents() {
+    public Set<String> getAttendedStudents() {
         return attendedStudents;
     }
 
-    public void setAttendedStudents(List<String> attendedStudents) {
+    public void setAttendedStudents(Set<String> attendedStudents) {
         this.attendedStudents = attendedStudents;
     }
 
