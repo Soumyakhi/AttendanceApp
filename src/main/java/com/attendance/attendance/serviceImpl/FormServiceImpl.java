@@ -17,6 +17,7 @@ import com.attendance.attendance.utils.FileUtils;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 @Service
 public class FormServiceImpl implements FormService {
@@ -133,7 +134,16 @@ public class FormServiceImpl implements FormService {
     }
     @Override
     public boolean finalizeCourse(String courseNo){
-        return fileUtil.process(formRepo.findByCourseNo(courseNo));
+        if (fileUtil.process(formRepo.findByCourseNo(courseNo))){
+            formRepo.deleteByCourseNo(courseNo);
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public List<FormEntity> findPendingForms() {
+        return formRepo.findAll();
     }
 
 }

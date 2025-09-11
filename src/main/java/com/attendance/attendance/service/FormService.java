@@ -3,8 +3,10 @@ package com.attendance.attendance.service;
 import com.attendance.attendance.dto.CourseDTO;
 import com.attendance.attendance.dto.StudentFormDTO;
 import com.attendance.attendance.dto.TeacherFormDTO;
+import com.attendance.attendance.entity.FormEntity;
 
 import java.io.File;
+import java.util.List;
 
 public interface FormService {
     public String createForm(CourseDTO classDto);
@@ -13,4 +15,5 @@ public interface FormService {
     public boolean addTeacherxls(TeacherFormDTO teacherFormDTO);
     public boolean addStudentxls(StudentFormDTO studentFormDTO);
     public boolean finalizeCourse(String courseNo);
+    List<FormEntity> findPendingForms();
 }

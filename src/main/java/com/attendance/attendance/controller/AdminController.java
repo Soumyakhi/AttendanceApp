@@ -69,8 +69,17 @@ public class AdminController {
     public ResponseEntity<Object> postAttendance(HttpServletRequest request, @PathVariable String classId) {
         return new ResponseEntity<>(classService.postAttendance(request,classId), HttpStatus.OK);
     }
-    @GetMapping("/viewAttendance/{classId}")
-    public ResponseEntity<Object> postAttendance(@PathVariable String classId) {
-        return new ResponseEntity<>(classService.viewAttendance(classId), HttpStatus.OK);
+    @GetMapping("/viewAttendanceTeacher")
+    public ResponseEntity<Object> viewAttendanceTeacher(HttpServletRequest request) {
+        return new ResponseEntity<>(classService.viewAttendanceTeacher(request), HttpStatus.OK);
     }
+    @GetMapping("/findAllPendingForms")
+    public ResponseEntity<Object> findAllPendingForms() {
+        return new ResponseEntity<>(formService.findPendingForms(), HttpStatus.OK);
+    }
+    @GetMapping("/viewAttendanceStudent")
+    public ResponseEntity<Object> viewAttendanceStd(HttpServletRequest request) {
+        return new ResponseEntity<>(classService.viewAttendanceStudent(request), HttpStatus.OK);
+    }
+
 }
